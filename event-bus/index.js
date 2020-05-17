@@ -11,9 +11,10 @@ app.post('/events', (req, res) => {
 
   console.log(event)
 
-  axios.post('http://localhost:4000/events', event)
-  axios.post('http://localhost:4001/events', event)
-  axios.post('http://localhost:4002/events', event)
+  axios.post('http://localhost:4000/events', event) // Posts Service
+  axios.post('http://localhost:4001/events', event) // Comments Service
+  axios.post('http://localhost:4002/events', event) // Query Service
+  axios.post('http://localhost:4003/events', event) // Moderation Service
 
   res.status(200).send(event)
 })
