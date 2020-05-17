@@ -6,8 +6,12 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+const events = []
+
 app.post('/events', (req, res) => {
   const event = req.body
+
+  events.push(event)
 
   console.log(event)
 
@@ -17,6 +21,10 @@ app.post('/events', (req, res) => {
   axios.post('http://localhost:4003/events', event) // Moderation Service
 
   res.status(200).send(event)
+})
+
+app.get('/events', (req, res) => {
+  res.status(200).send(events)
 })
 
 app.listen(4005, () => {
